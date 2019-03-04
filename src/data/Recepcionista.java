@@ -27,15 +27,5 @@ public class Recepcionista extends Administrador{
     public void solicitarDatos() {
         
     }
-
-    @Override
-    public void obtenerDireccion() {
-        
-    }
-
-    @Override
-    public void obtenerCalificacion() {
-        
-    }
     
 }

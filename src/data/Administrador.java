@@ -9,28 +9,14 @@ package data;
  *
  * @author Asus-PC
  */
-public abstract class Administrador implements Hotel{
-    private String nombre;
-    private String id;
-    private String contraseña;
+public abstract class Administrador extends Persona{
+   
     private String sucursal;
     private String puestoTrabajo;
     private String horarioTrabajo;
    
     public abstract void habitacionesDisponibles();
     public abstract void solicitarDatos();
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
 
     public String getSucursal() {
         return sucursal;
@@ -42,18 +28,6 @@ public abstract class Administrador implements Hotel{
 
     public String getHorarioTrabajo() {
         return horarioTrabajo;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
     }
 
     public void setSucursal(String sucursal) {
