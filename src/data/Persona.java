@@ -6,6 +6,16 @@ public abstract class Persona {
     private String id;
     private String contraseña;
 
+    public Persona() {
+    }
+
+    public Persona(String nombre, String id, String contraseña) {
+        this.nombre = nombre;
+        this.id = id;
+        this.contraseña = contraseña;
+    }
+
+    
     public String getNombre() {
         return nombre;
     }

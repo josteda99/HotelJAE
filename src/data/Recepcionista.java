@@ -3,6 +3,11 @@ package data;
 
 public class Recepcionista extends Administrador{
 
+    public Recepcionista(String sucursal, String puestoTrabajo, String horarioTrabajo, String nombre, String id, String contraseña) {
+        super(sucursal, puestoTrabajo, horarioTrabajo, nombre, id, contraseña);
+    }
+
+    
     public Recepcionista() {
     }
 

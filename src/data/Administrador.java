@@ -18,6 +18,23 @@ public abstract class Administrador extends Persona{
     public abstract void habitacionesDisponibles();
     public abstract void solicitarDatos();
 
+    public Administrador() {
+    }
+
+    public Administrador(String sucursal, String puestoTrabajo, String horarioTrabajo) {
+        this.sucursal = sucursal;
+        this.puestoTrabajo = puestoTrabajo;
+        this.horarioTrabajo = horarioTrabajo;
+    }
+
+    public Administrador(String sucursal, String puestoTrabajo, String horarioTrabajo, String nombre, String id, String contraseña) {
+        super(nombre, id, contraseña);
+        this.sucursal = sucursal;
+        this.puestoTrabajo = puestoTrabajo;
+        this.horarioTrabajo = horarioTrabajo;
+    }
+
+    
     public String getSucursal() {
         return sucursal;
     }
