@@ -3,15 +3,11 @@ package GUI;
 
 import java.util.ArrayList;
 import data.*;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import javax.swing.ImageIcon;
 
 public class GUI extends javax.swing.JFrame {
 
     public GUI() {
         initComponents();
-        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -115,7 +111,7 @@ public class GUI extends javax.swing.JFrame {
         Habitacion h202 = new Habitacion(70000, "television, cama king, wifi, baño con agua caliente,cocina, spa", "ocupado",3, 1, 1, 202);
         Habitacion h203 = new Habitacion(50000, "television, cama doble, wifi, baño con agua caliente,spa", "ocupado",2, 2, 1, 203);
         Habitacion h204 = new Habitacion(70000, "television, cama doble, wifi, baño con agua caliente,cocina, sala , spa", "Disponible",2, 2, 1, 204);
-            //Tecer piso(suits)
+            //Tercer piso(suits)
         Habitacion suite1 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente, spa , piscina , vista a la playa , servicio al cuarto", "Disponible",5, 1, 3, 301);
         Habitacion suite2 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente,cocina, spapiscina , vista a la playa , servicio al cuarto", "ocupado",5, 1, 3, 302);
         Habitacion suite3 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente,spa,piscina , vista a la playa , servicio al cuarto", "ocupado",5, 2, 2, 303);
@@ -168,7 +164,6 @@ public class GUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUI().setVisible(true);
-                
             }
         });
         
