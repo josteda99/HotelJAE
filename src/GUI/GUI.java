@@ -98,37 +98,6 @@ public class GUI extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         
-        //creacion del hotel(arreglo)
-        ArrayList<Habitacion> hotel = new ArrayList<>();
-        //creacion de las habitaciones
-            //primer piso
-        Habitacion h101 = new Habitacion(32000, "television, cama sencilla, wifi, baño con agua caliente", "Disponible",2, 1, 1, 101);
-        Habitacion h102 = new Habitacion(40000, "television, cama sencilla, wifi, baño con agua caliente,cocina", "ocupado",2, 1, 1, 102);
-        Habitacion h103 = new Habitacion(32000, "television, cama sencilla, wifi, baño con agua caliente", "ocupado",2, 1, 1, 103);
-        Habitacion h104 = new Habitacion(40000, "television, cama sencilla, wifi, baño con agua caliente,cocina", "Disponible",2, 1, 1, 104);
-            //segundo piso
-        Habitacion h201 = new Habitacion(50000, "television, cama doble, wifi, baño con agua caliente, spa", "Disponible",2, 2, 1, 201);
-        Habitacion h202 = new Habitacion(70000, "television, cama king, wifi, baño con agua caliente,cocina, spa", "ocupado",3, 1, 1, 202);
-        Habitacion h203 = new Habitacion(50000, "television, cama doble, wifi, baño con agua caliente,spa", "ocupado",2, 2, 1, 203);
-        Habitacion h204 = new Habitacion(70000, "television, cama doble, wifi, baño con agua caliente,cocina, sala , spa", "Disponible",2, 2, 1, 204);
-            //Tercer piso(suits)
-        Habitacion suite1 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente, spa , piscina , vista a la playa , servicio al cuarto", "Disponible",5, 1, 3, 301);
-        Habitacion suite2 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente,cocina, spapiscina , vista a la playa , servicio al cuarto", "ocupado",5, 1, 3, 302);
-        Habitacion suite3 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente,spa,piscina , vista a la playa , servicio al cuarto", "ocupado",5, 2, 2, 303);
-        Habitacion suitePresidencial = new Habitacion(700000, "television,  cuatro camas doble, wifi, baño con agua caliente,cocina, sala , spa ,piscina , vista a la playa , servicio al cuarto", "Disponible",5, 4, 4, 304);
-        
-        hotel.add(h101);
-        hotel.add(h102);
-        hotel.add(h103);
-        hotel.add(h104);
-        hotel.add(h201);
-        hotel.add(h202);
-        hotel.add(h203);
-        hotel.add(h204);
-        hotel.add(suite1);
-        hotel.add(suite2);
-        hotel.add(suite3);
-        hotel.add(suitePresidencial);
         
         //creacion recepcionista
         Recepcionista r1 = new Recepcionista("Cartagena", "recepcion principal", "lunes a domingo - 9:00 am a 12:00 pm", "marina", "1019153478", "contrasenna");

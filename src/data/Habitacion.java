@@ -9,19 +9,19 @@ public class Habitacion implements Hotel{
     private int capacidad;
     private int numeroCamas;
     private int numeroHabitaciones;
-    private int numeroCuerto;
+    private int numeroCuarto;
 
     public Habitacion() {
     }
 
-    public Habitacion(double precio,  String servicios, String disponibilidad, int capacidad, int numeroCamas, int numeroHabitaciones, int numeroCuerto) {
+    public Habitacion(double precio,  String servicios, String disponibilidad, int capacidad, int numeroCamas, int numeroHabitaciones, int numeroCuarto) {
         this.precio = precio;
         this.servicios = servicios;
         this.disponibilidad = disponibilidad;
         this.capacidad = capacidad;
         this.numeroCamas = numeroCamas;
         this.numeroHabitaciones = numeroHabitaciones;
-        this.numeroCuerto = numeroCuerto;
+        this.numeroCuarto = numeroCuarto;
     }
 
     public double getPrecio() {
@@ -52,8 +52,8 @@ public class Habitacion implements Hotel{
         return numeroHabitaciones;
     }
 
-    public int getNumeroCuerto() {
-        return numeroCuerto;
+    public int getNumeroCuarto() {
+        return numeroCuarto;
     }
 
     public void setPrecio(double precio) {
@@ -84,8 +84,19 @@ public class Habitacion implements Hotel{
         this.numeroHabitaciones = numeroHabitaciones;
     }
 
-    public void setNumeroCuerto(int numeroCuerto) {
-        this.numeroCuerto = numeroCuerto;
+    public void setNumeroCuarto(int numeroCuerto) {
+        this.numeroCuarto = numeroCuerto;
+    }
+
+    @Override
+    public String toString() {
+        return "No de la habitacion: " + numeroCuarto + '\n' + 
+                "Disponibilidad: " + disponibilidad + '\n' +
+                "Precio: " + precio + " $ por noche" + '\n' +
+                "Serivicios: " + servicios + '\n' +
+                "No Habitaciones: " + numeroHabitaciones + '\n'+
+                "No Camas: " + numeroCamas + " camas" + '\n' + 
+                "Capacidad: " + capacidad + " personas " + '\n'; 
     }
 
    
