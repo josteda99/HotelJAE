@@ -14,6 +14,14 @@ public class Usuario extends Persona{
         this.nHabitaciones = nHabitaciones;
         this.formaPago = formaPago;
     }
+
+    public Usuario(int nHabitaciones, String formaPago, String nombre, String id, String contraseña) {
+        super(nombre, id, contraseña);
+        this.nHabitaciones = nHabitaciones;
+        this.formaPago = formaPago;
+    }
+    
+    
     
     public void pagar(){
     

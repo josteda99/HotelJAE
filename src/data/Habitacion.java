@@ -3,21 +3,23 @@ package data;
 
 public class Habitacion implements Hotel{
     private double precio;
-    private boolean ocuapado;
+    private boolean ocupado;
     private String servicios;
     private String disponibilidad;
     private int capacidad;
     private int numeroCamas;
     private int numeroHabitaciones;
     private int numeroCuarto;
+    private Usuario usuario;
 
     public Habitacion() {
     }
 
-    public Habitacion(double precio,  String servicios, String disponibilidad, int capacidad, int numeroCamas, int numeroHabitaciones, int numeroCuarto) {
+    public Habitacion(double precio,  String servicios,String disponible , Boolean ocupado, int capacidad, int numeroCamas, int numeroHabitaciones, int numeroCuarto) {
         this.precio = precio;
         this.servicios = servicios;
         this.disponibilidad = disponibilidad;
+        this.ocupado = ocupado;
         this.capacidad = capacidad;
         this.numeroCamas = numeroCamas;
         this.numeroHabitaciones = numeroHabitaciones;
@@ -29,7 +31,7 @@ public class Habitacion implements Hotel{
     }
 
     public boolean isOcuapado() {
-        return ocuapado;
+        return ocupado;
     }
 
     public String getServicios() {
@@ -61,7 +63,7 @@ public class Habitacion implements Hotel{
     }
 
     public void setOcuapado(boolean ocuapado) {
-        this.ocuapado = ocuapado;
+        this.ocupado = ocuapado;
     }
 
     public void setServicios(String servicios) {
@@ -99,6 +101,23 @@ public class Habitacion implements Hotel{
                 "Capacidad: " + capacidad + " personas " + '\n'; 
     }
 
+    public boolean isOcupado() {
+        return ocupado;
+    }
+
+    public void setOcupado(boolean ocupado) {
+        this.ocupado = ocupado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
    
 
     
