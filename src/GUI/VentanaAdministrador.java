@@ -144,19 +144,10 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         }
         tblHabitacion.setModel(modelo);
         
-        cbxSelHabitacion.addItem(hotel.get(0).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(1).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(2).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(3).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(4).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(5).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(6).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(7).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(8).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(9).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(10).getNumeroCuarto());
-        cbxSelHabitacion.addItem(hotel.get(11).getNumeroCuarto());
+        for(int i = 0 ; i < 11 ; i++){
+            cbxSelHabitacion.addItem(hotel.get(i).getNumeroCuarto());
         
+        }
         cbxSelHabitacion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -182,6 +173,18 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        vtnReservar = new javax.swing.JFrame();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        cbxNHabitacion = new javax.swing.JComboBox();
+        bgEfectivo = new javax.swing.JRadioButton();
+        bgTarjeta = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnReservar = new javax.swing.JButton();
@@ -216,6 +219,110 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
+
+        vtnReservar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jPanel4.setMinimumSize(new java.awt.Dimension(300, 300));
+
+        jLabel5.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        jLabel5.setText("REGISTRO");
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Nombre y Apellido");
+
+        jLabel7.setText("Identificacion");
+
+        jLabel8.setText("Numero Habitacion");
+
+        jLabel9.setText("Forma de Pago");
+
+        cbxNHabitacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        bgEfectivo.setText("jRadioButton1");
+
+        bgTarjeta.setText("jRadioButton2");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(21, 21, 21)))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombre)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bgEfectivo)
+                            .addComponent(cbxNHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bgTarjeta))))
+                .addGap(23, 23, 23))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cbxNHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(bgEfectivo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bgTarjeta)
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout vtnReservarLayout = new javax.swing.GroupLayout(vtnReservar.getContentPane());
+        vtnReservar.getContentPane().setLayout(vtnReservarLayout);
+        vtnReservarLayout.setHorizontalGroup(
+            vtnReservarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vtnReservarLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        vtnReservarLayout.setVerticalGroup(
+            vtnReservarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -679,13 +786,22 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxSelHabitacionActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
-        VtnReservar vtnReservar = new VtnReservar();
+       // VtnReservar vtnReservar = new VtnReservar();
+       //vtnReservar.setVisible(true);
         vtnReservar.setVisible(true);
     }//GEN-LAST:event_btnReservarActionPerformed
 
     private void tblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClientesMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblClientesMouseClicked
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
     
     public static void main(String args[]) {
@@ -722,18 +838,27 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton bgEfectivo;
+    private javax.swing.JRadioButton bgTarjeta;
     private javax.swing.JButton btnCaja;
     private javax.swing.JButton btnReservar;
+    private javax.swing.JComboBox cbxNHabitacion;
     private javax.swing.JComboBox cbxSelHabitacion;
     private javax.swing.JLabel ejemplo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -744,6 +869,8 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     private javax.swing.JTable tblClientes;
     private javax.swing.JTable tblHabitacion;
     private javax.swing.JTextArea txtAreaEspecificaciones;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JPanel v101;
     private javax.swing.JPanel v102;
     private javax.swing.JPanel v103;
@@ -760,5 +887,6 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel ventana2;
     private javax.swing.JPanel ventana4;
     private javax.swing.JPanel ventana5;
+    private javax.swing.JFrame vtnReservar;
     // End of variables declaration//GEN-END:variables
 }
