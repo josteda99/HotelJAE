@@ -1,10 +1,15 @@
 package GUI;
+import bussinesLogic.ProyectoFinalPoo;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import data.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
@@ -16,6 +21,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     String genero = " ";
     DefaultTableModel modelo;
     DefaultTableModel modelo1;
+    int i = 0; 
     
     //Creacion de Clientes
     Usuario u1 = new Usuario(101, "Tarjeta", "alfoso", "10283756", "abcd");
@@ -54,6 +60,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         colorVerde();
         cargarHabitaciones(hotel);
         asignarUsuario(hotel,usuarios,ventanasHotel);
+        System.out.println(hotel.size());
     }
     
     private void colorVerde(){
@@ -101,8 +108,8 @@ public class VentanaAdministrador extends javax.swing.JFrame {
             }else{
                 hotel.get(i).setDisponibilidad("Disponible");
             }
-        }
-        
+         }
+       
         String[] titulos = {"Clientes" , "Habitacion"};
         String[] registro = new String[2];
         modelo1 = new DefaultTableModel(null,titulos);
@@ -144,9 +151,8 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         }
         tblHabitacion.setModel(modelo);
         
-        for(int i = 0 ; i < 11 ; i++){
+        for(int i = 0 ; i < 12 ; i++){
             cbxSelHabitacion.addItem(hotel.get(i).getNumeroCuarto());
-        
         }
         cbxSelHabitacion.addActionListener(new ActionListener() {
             @Override
@@ -155,6 +161,9 @@ public class VentanaAdministrador extends javax.swing.JFrame {
             }
         });
 
+        for(int i = 0 ; i < 12 ; i++){
+            cbxNHabitacion.addItem(hotel.get(i).getNumeroCuarto());
+        }
     }
     
     private void comboBox(ArrayList<Habitacion> hotel,JComboBox cbxSelHabitacion){
@@ -184,16 +193,17 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         cbxNHabitacion = new javax.swing.JComboBox();
-        bgEfectivo = new javax.swing.JRadioButton();
-        bgTarjeta = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
+        rbtnTarjeta = new javax.swing.JRadioButton();
+        rbtnEfectivo = new javax.swing.JRadioButton();
+        txtCorreo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spnNumeroPersonas = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtPeticion = new javax.swing.JTextField();
+        btnReservarArc = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnReservar = new javax.swing.JButton();
@@ -252,34 +262,57 @@ public class VentanaAdministrador extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
         jLabel6.setText("Nombre y Apellido");
 
+        jLabel7.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
         jLabel7.setText("Identificacion");
 
+        jLabel8.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
         jLabel8.setText("Numero Habitacion");
 
+        jLabel9.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
         jLabel9.setText("Forma de Pago");
 
-        cbxNHabitacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        bgEfectivo.setText("Tarjeta");
-
-        bgTarjeta.setText("Efectivo");
-
-        jLabel10.setText("Correo");
-
-        jLabel11.setText("Numero de personas");
-
-        jLabel12.setText("Peticiones Especiales");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        cbxNHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                cbxNHabitacionActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Reservar");
+        buttonGroup1.add(rbtnTarjeta);
+        rbtnTarjeta.setText("Tarjeta");
 
+        buttonGroup1.add(rbtnEfectivo);
+        rbtnEfectivo.setText("Efectivo");
+
+        jLabel10.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel10.setText("Correo");
+
+        spnNumeroPersonas.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        spnNumeroPersonas.setOpaque(false);
+
+        jLabel11.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel11.setText("Numero de personas");
+
+        jLabel12.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel12.setText("Peticiones Especiales");
+
+        txtPeticion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPeticionActionPerformed(evt);
+            }
+        });
+
+        btnReservarArc.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        btnReservarArc.setText("Reservar");
+        btnReservarArc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservarArcActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
         jButton2.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -305,20 +338,20 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                                     .addComponent(jLabel9))
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spnNumeroPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNombre)
                                     .addComponent(txtId)
-                                    .addComponent(jTextField1)
+                                    .addComponent(txtCorreo)
                                     .addComponent(cbxNHabitacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bgEfectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bgTarjeta, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))))
+                                    .addComponent(rbtnTarjeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rbtnEfectivo, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))))
                         .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2)
+                            .addComponent(txtPeticion)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1)
+                                .addComponent(btnReservarArc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)))
                         .addGap(31, 31, 31))))
@@ -342,12 +375,12 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnNumeroPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
@@ -355,16 +388,16 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(bgEfectivo))
+                    .addComponent(rbtnTarjeta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bgTarjeta)
+                .addComponent(rbtnEfectivo)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPeticion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnReservarArc)
                     .addComponent(jButton2))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -896,11 +929,46 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtPeticionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPeticionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtPeticionActionPerformed
 
-    
+    private void btnReservarArcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarArcActionPerformed
+        i = i + 1;
+        String nombreApellido = txtNombre.getText();
+        String id = txtId.getText();
+        String correo = txtCorreo.getText();
+        String peticion = txtPeticion.getText();
+        int numeroPersonas = (int) spnNumeroPersonas.getModel().getValue();
+        int numeroCuarto = (int) cbxNHabitacion.getSelectedItem();
+        String formaPago;
+            if(this.rbtnTarjeta.isSelected()){
+               formaPago = this.rbtnTarjeta.getText();
+            }else{
+               formaPago = this.rbtnEfectivo.getText();
+            }
+        try {
+            ProyectoFinalPoo.gurdarClientes(nombreApellido,id,correo,peticion,numeroPersonas,numeroCuarto,formaPago,i);
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+          for(int i = 0 ; i < hotel.size() ; i++){
+            if(hotel.get(i).getUsuario() != null){
+                hotel.get(i).setOcupado(true);
+                hotel.get(i).setDisponibilidad("ocupado");
+                ventanasHotel.get(i).setBackground(Color.red);
+            }else{
+                hotel.get(i).setDisponibilidad("Disponible");
+            }
+         }
+       
+    }//GEN-LAST:event_btnReservarArcActionPerformed
+
+    private void cbxNHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNHabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxNHabitacionActionPerformed
+
     public static void main(String args[]) {
         
         
@@ -935,14 +1003,13 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton bgEfectivo;
-    private javax.swing.JRadioButton bgTarjeta;
     private javax.swing.JButton btnCaja;
     private javax.swing.JButton btnReservar;
+    private javax.swing.JButton btnReservarArc;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbxNHabitacion;
     private javax.swing.JComboBox cbxSelHabitacion;
     private javax.swing.JLabel ejemplo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -970,14 +1037,16 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JRadioButton rbtnEfectivo;
+    private javax.swing.JRadioButton rbtnTarjeta;
+    private javax.swing.JSpinner spnNumeroPersonas;
     private javax.swing.JTable tblClientes;
     private javax.swing.JTable tblHabitacion;
     private javax.swing.JTextArea txtAreaEspecificaciones;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPeticion;
     private javax.swing.JPanel v101;
     private javax.swing.JPanel v102;
     private javax.swing.JPanel v103;

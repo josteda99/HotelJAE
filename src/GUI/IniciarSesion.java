@@ -146,7 +146,7 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         boolean a = false;
-        ProyectoFinalPoo.obtener(administradores);
+        ProyectoFinalPoo.obtenerDatos(administradores);
         System.out.println("admin hashmap " + administradores.isEmpty());
         String usuarioAdmin = txtUsuarioAdmin.getText();
         String contra = txtAdmin.getText();
