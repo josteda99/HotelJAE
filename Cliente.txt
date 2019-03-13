@@ -1,2 +1,14 @@
-        0 0  
-        0 0  
+Nombre y Apellido: japsdasd
+Identificacion: sdafgdhf
+Correo: sadfghj
+Numero de Personas: 2
+Habitacion: 204
+Forma de pago: Tarjeta
+Peticiones Adicionales: sfdgh
+Nombre y Apellido:  
+Identificacion:  
+Correo:  
+Numero de Personas: 0
+Habitacion: 0
+Forma de pago:  
+Peticiones Adicionales:  

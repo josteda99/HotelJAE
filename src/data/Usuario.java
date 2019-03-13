@@ -1,7 +1,6 @@
-
 package data;
 
-public class Usuario extends Persona{
+public class Usuario extends Persona {
 
     private int nHabitaciones;
     private String formaPago;
@@ -11,9 +10,8 @@ public class Usuario extends Persona{
 
     public Usuario() {
     }
-    
-    
-    public Usuario( int nHabitaciones, String formaPago) {
+
+    public Usuario(int nHabitaciones, String formaPago) {
         this.nHabitaciones = nHabitaciones;
         this.formaPago = formaPago;
     }
@@ -57,12 +55,12 @@ public class Usuario extends Persona{
         this.correo = correo;
     }
 
-    public void pagar(){
-    
+    public void pagar() {
+
     }
-    
-    public void darInformacion(){
-    
+
+    public void darInformacion() {
+
     }
 
     public int getnHabitaciones() {
@@ -83,10 +81,13 @@ public class Usuario extends Persona{
 
     @Override
     public String toString() {
-        return this.getNombre() + " " + this.getId()+ " "  +this.getCorreo()+ " "  + this.getPeticion()+ " " 
-                +this.getnHabitaciones()+ " "  + this.getnPersonas()+ " "  + this.getCorreo() + '\n';
+        return "Nombre y Apellido: " + this.getNombre() + '\n'
+                + "Identificacion: " + this.getId() + '\n'
+                + "Correo: " + this.getCorreo() + '\n'
+                + "Numero de Personas: " + this.getnPersonas() + '\n'
+                + "Habitacion: " + this.getnHabitaciones() + '\n'
+                + "Forma de pago: " + this.getFormaPago() + '\n'
+                + "Peticiones Adicionales: " + this.getPeticion() + '\n';
     }
-    
-    
-    
+
 }

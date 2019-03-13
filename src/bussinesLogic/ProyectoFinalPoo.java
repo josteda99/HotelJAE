@@ -115,6 +115,7 @@ public class ProyectoFinalPoo implements Serializable {
 //        administradores.put(valeria.getContraseña(), valeria);
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new GUI().setVisible(true);
 
             }
