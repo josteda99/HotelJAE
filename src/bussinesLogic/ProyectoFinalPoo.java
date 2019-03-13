@@ -2,6 +2,7 @@ package bussinesLogic;
 
 import GUI.GUI;
 import GUI.VentanaAdministrador;
+import data.Habitacion;
 import data.Recepcionista;
 import data.Usuario;
 import java.io.BufferedReader;
@@ -20,58 +21,54 @@ import java.util.HashMap;
  *
  * @author Asus-PC
  */
-public class ProyectoFinalPoo implements Serializable{
+public class ProyectoFinalPoo implements Serializable {
 
 //    public ProyectoFinalPoo() {
 //        HashMap<String, Recepcionista> administradores = new HashMap<>();
 //        obtener(administradores);
 //
 //    }
-    
-    public static void mostrarCliente(){
-    try{
-       File myFile = new File("Cliente.txt");
-       FileReader fileReader = new FileReader(myFile);
-       BufferedReader reader = new BufferedReader(fileReader);
-       String line = null;
-       
-       while((line = reader.readLine() )!= null) {
-           System.out.println(line);
-       }
-       reader.close();
-        }catch(Exception ecx){
+    public static void mostrarCliente() {
+        try {
+            File myFile = new File("Cliente.txt");
+            FileReader fileReader = new FileReader(myFile);
+            BufferedReader reader = new BufferedReader(fileReader);
+            String line = null;
+
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();
+        } catch (Exception ecx) {
             System.out.println("algo ha ");
-        }  
+        }
     }
-    
-    public static void gurdarClientes(String nombreApellido, String id, String correo, String peticion, int numeroPersonas, int numeroCuarto, String formaPago , int i) throws IOException{
+
+    public static void gurdarClientes(String nombreApellido, String id, String correo, String peticion, int numeroPersonas, int numeroCuarto, String formaPago, int i) throws IOException {
         FileWriter writer = null;
         Usuario[] usuarioArray = new Usuario[10];
-        
-        for(int j = 0; j < 10;j++){
+
+        for (int j = 0; j < 10; j++) {
             usuarioArray[j] = new Usuario(0, " ", " ", 0, " ", " ", " ", " ");
         }
-        
-        try{
-     
+
+        try {
+
             usuarioArray[i] = new Usuario(numeroCuarto, formaPago, peticion, numeroPersonas, correo, nombreApellido, id, " ");
-            System.out.println( i + "si se paso el objeto" + usuarioArray[i].toString());
+            System.out.println(i + "si se paso el objeto" + usuarioArray[i].toString());
             writer = new FileWriter("Cliente.txt");
-            
+
             writer.write(usuarioArray[1].toString() + usuarioArray[2].toString());
 
-            
-            
-
             writer.close();
-            
-        }catch(FileNotFoundException ex){
+
+        } catch (FileNotFoundException ex) {
             System.out.println("el archivo no existe");
-        }catch(IOException exe){
+        } catch (IOException exe) {
             System.out.println("Algo salio mal");
         }
     }
-    
+
     public static void obtenerDatos(HashMap<String, Recepcionista> administradores) {
         Recepcionista marina = new Recepcionista("Cartagena", "recepcion principal",
                 "lunes a domingo - 9:00 am a 12:00 pm",
@@ -112,7 +109,7 @@ public class ProyectoFinalPoo implements Serializable{
                 "lunes a domingo - 9:00 am a 12:00 pm",
                 "Valeria", "1019153478", "contrasennaValeria");
 
-       // administradores.put(marina.getContraseña(), marina);
+        // administradores.put(marina.getContraseña(), marina);
 //        administradores.put(juanAndres.getContraseña(), juanAndres);
 //        administradores.put(jhon.getContraseña(), jhon);
 //        administradores.put(valeria.getContraseña(), valeria);
@@ -184,7 +181,16 @@ public class ProyectoFinalPoo implements Serializable{
         }
     }
 
-  
+    public static double ingresosTotales(ArrayList<Habitacion> hotel) {
+        double ingresos = 0;
+        for (int i = 0; i < 12; i++) {
+            if (hotel.get(i).isOcupado() == true) {
+                ingresos = ingresos + hotel.get(i).getPrecio();
+            }
+        }
+        System.out.println(ingresos);
+        return ingresos;
+    }
 
     private void pedirDatos() {
         System.out.println("Por favor ingrese los siguientes datos");

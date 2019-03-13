@@ -1,4 +1,5 @@
 package GUI;
+
 import bussinesLogic.ProyectoFinalPoo;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -11,6 +12,7 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class VentanaAdministrador extends javax.swing.JFrame {
@@ -21,99 +23,81 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     String genero = " ";
     DefaultTableModel modelo;
     DefaultTableModel modelo1;
-    int i = 0; 
-    
+    int i = 0;
+
     //Creacion de Clientes
     Usuario u1 = new Usuario(101, "Tarjeta", "alfoso", "10283756", "abcd");
     Usuario u2 = new Usuario(202, "Efectivo", "enrrique", "156756", "abcd");
     Usuario u3 = new Usuario(301, "Tarjeta", "isabella", "1098756", "abcd");
-    
+
     //creacion del usuarios(arreglo)
     ArrayList<Usuario> usuarios = new ArrayList<>();
-    
+
     //creacion del hotel(arreglo)
     ArrayList<Habitacion> hotel = new ArrayList<>();
-    
+
     //creacion de las habitaciones
-    
-      //primer piso
-    Habitacion h101 = new Habitacion(32000, "television, cama sencilla, wifi, baño con agua caliente", "Disponible",false,2, 1, 1, 101);
-    Habitacion h102 = new Habitacion(40000, "television, cama sencilla, wifi, baño con agua caliente,cocina", "Disponible",false,2, 1, 1, 102);
-    Habitacion h103 = new Habitacion(32000, "television, cama sencilla, wifi, baño con agua caliente", "Disponible",false,2, 1, 1, 103);
-    Habitacion h104 = new Habitacion(40000, "television, cama sencilla, wifi, baño con agua caliente,cocina", "Disponible",false,2, 1, 1, 104);
-       //segundo piso
-    Habitacion h201 = new Habitacion(50000, "television, cama doble, wifi, baño con agua caliente, spa", "Disponible",false,2, 2, 1, 201);
-    Habitacion h202 = new Habitacion(70000, "television, cama king, wifi, baño con agua caliente,cocina, spa", "Disponible",false,3, 1, 1, 202);
-    Habitacion h203 = new Habitacion(50000, "television, cama doble, wifi, baño con agua caliente,spa", "Disponible",false,2, 2, 1, 203);
-    Habitacion h204 = new Habitacion(70000, "television, cama doble, wifi, baño con agua caliente,cocina, sala , spa", "Disponible",false,2, 2, 1, 204);
-        //Tercer piso(suits)
-    Habitacion suite1 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente, spa , piscina , vista a la playa , servicio al cuarto", "Disponible",false,5, 1, 3, 301);
-    Habitacion suite2 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente,cocina, spapiscina , vista a la playa , servicio al cuarto", "Disponible",false,5, 1, 3, 302);
-    Habitacion suite3 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente,spa,piscina , vista a la playa , servicio al cuarto", "Disponible",false,5, 2, 2, 303);
-    Habitacion suitePresidencial = new Habitacion(700000, "television,  cuatro camas doble, wifi, baño con agua caliente,cocina, sala , spa ,piscina , vista a la playa , servicio al cuarto", "Disponible",false,5, 4, 4, 304);
-    
+    //primer piso
+    Habitacion h101 = new Habitacion(32000, "television, cama sencilla, wifi, baño con agua caliente", "Disponible", false, 2, 1, 1, 101);
+    Habitacion h102 = new Habitacion(40000, "television, cama sencilla, wifi, baño con agua caliente,cocina", "Disponible", false, 2, 1, 1, 102);
+    Habitacion h103 = new Habitacion(32000, "television, cama sencilla, wifi, baño con agua caliente", "Disponible", false, 2, 1, 1, 103);
+    Habitacion h104 = new Habitacion(40000, "television, cama sencilla, wifi, baño con agua caliente,cocina", "Disponible", false, 2, 1, 1, 104);
+    //segundo piso
+    Habitacion h201 = new Habitacion(50000, "television, cama doble, wifi, baño con agua caliente, spa", "Disponible", false, 2, 2, 1, 201);
+    Habitacion h202 = new Habitacion(70000, "television, cama king, wifi, baño con agua caliente,cocina, spa", "Disponible", false, 3, 1, 1, 202);
+    Habitacion h203 = new Habitacion(50000, "television, cama doble, wifi, baño con agua caliente,spa", "Disponible", false, 2, 2, 1, 203);
+    Habitacion h204 = new Habitacion(70000, "television, cama doble, wifi, baño con agua caliente,cocina, sala , spa", "Disponible", false, 2, 2, 1, 204);
+    //Tercer piso(suits)
+    Habitacion suite1 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente, spa , piscina , vista a la playa , servicio al cuarto", "Disponible", false, 5, 1, 3, 301);
+    Habitacion suite2 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente,cocina, spapiscina , vista a la playa , servicio al cuarto", "Disponible", false, 5, 1, 3, 302);
+    Habitacion suite3 = new Habitacion(200000, "television, cama king, wifi, baño con agua caliente,spa,piscina , vista a la playa , servicio al cuarto", "Disponible", false, 5, 2, 2, 303);
+    Habitacion suitePresidencial = new Habitacion(700000, "television,  cuatro camas doble, wifi, baño con agua caliente,cocina, sala , spa ,piscina , vista a la playa , servicio al cuarto", "Disponible", false, 5, 4, 4, 304);
+
     //arreglo de ventanas(hotel)
     ArrayList<JPanel> ventanasHotel = new ArrayList<>();
-    
+
     public VentanaAdministrador() {
         initComponents();
         colorVerde();
         cargarHabitaciones(hotel);
-        asignarUsuario(hotel,usuarios,ventanasHotel);
+        asignarUsuario(hotel, usuarios, ventanasHotel);
         System.out.println(hotel.size());
     }
-    
-    private void colorVerde(){
-            ventanasHotel.add(v101);
-            ventanasHotel.add(v102);
-            ventanasHotel.add(v103);
-            ventanasHotel.add(v104);
-            ventanasHotel.add(v201);
-            ventanasHotel.add(v202);
-            ventanasHotel.add(v203);
-            ventanasHotel.add(v204);
-            ventanasHotel.add(v301);
-            ventanasHotel.add(v302);
-            ventanasHotel.add(v303);
-            ventanasHotel.add(v304);
-            
-            v101.setBackground(Color.green);
-            v102.setBackground(Color.green);
-            v103.setBackground(Color.green);
-            v104.setBackground(Color.green);
-            v201.setBackground(Color.green);
-            v202.setBackground(Color.green);
-            v203.setBackground(Color.green);
-            v204.setBackground(Color.green);
-            v301.setBackground(Color.green);
-            v302.setBackground(Color.green);
-            v303.setBackground(Color.green);
-            v304.setBackground(Color.green);
-        
+
+    private void colorVerde() {
+        ventanasHotel.add(v101);
+        ventanasHotel.add(v102);
+        ventanasHotel.add(v103);
+        ventanasHotel.add(v104);
+        ventanasHotel.add(v201);
+        ventanasHotel.add(v202);
+        ventanasHotel.add(v203);
+        ventanasHotel.add(v204);
+        ventanasHotel.add(v301);
+        ventanasHotel.add(v302);
+        ventanasHotel.add(v303);
+        ventanasHotel.add(v304);
+
+        v101.setBackground(Color.green);
+        v102.setBackground(Color.green);
+        v103.setBackground(Color.green);
+        v104.setBackground(Color.green);
+        v201.setBackground(Color.green);
+        v202.setBackground(Color.green);
+        v203.setBackground(Color.green);
+        v204.setBackground(Color.green);
+        v301.setBackground(Color.green);
+        v302.setBackground(Color.green);
+        v303.setBackground(Color.green);
+        v304.setBackground(Color.green);
+
     }
-    
-    private void asignarUsuario(ArrayList<Habitacion> hotel, ArrayList<Usuario> u, ArrayList<JPanel> ventanasHotel){
-        usuarios.add(u1);
-        usuarios.add(u2);
-        usuarios.add(u3);
-        h101.setUsuario(u1);
-        h202.setUsuario(u2);
-        suite1.setUsuario(u3);
-        
-        for(int i = 0 ; i < hotel.size() ; i++){
-            if(hotel.get(i).getUsuario() != null){
-                hotel.get(i).setOcupado(true);
-                hotel.get(i).setDisponibilidad("ocupado");
-                ventanasHotel.get(i).setBackground(Color.red);
-            }else{
-                hotel.get(i).setDisponibilidad("Disponible");
-            }
-         }
-       
-        String[] titulos = {"Clientes" , "Habitacion"};
+
+    private void asignarUsuarioNuevo(ArrayList<Habitacion> hotel, ArrayList<Usuario> usuarios, ArrayList<JPanel> ventanasHotel) {
+        String[] titulos = {"Clientes", "Habitacion"};
         String[] registro = new String[2];
-        modelo1 = new DefaultTableModel(null,titulos);
-        for(Usuario us : u){
+        modelo1 = new DefaultTableModel(null, titulos);
+        for (Usuario us : usuarios) {
             String numeroHabitacionesString = String.valueOf(us.getnHabitaciones());
             registro[0] = us.getNombre();
             registro[1] = numeroHabitacionesString;
@@ -121,8 +105,38 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         }
         tblClientes.setModel(modelo1);
     }
-    
-    private void cargarHabitaciones(ArrayList<Habitacion> hotel){
+
+    private void asignarUsuario(ArrayList<Habitacion> hotel, ArrayList<Usuario> u, ArrayList<JPanel> ventanasHotel) {
+        usuarios.add(u1);
+        usuarios.add(u2);
+        usuarios.add(u3);
+        h101.setUsuario(u1);
+        h202.setUsuario(u2);
+        suite1.setUsuario(u3);
+
+        for (int i = 0; i < hotel.size(); i++) {
+            if (hotel.get(i).getUsuario() != null) {
+                hotel.get(i).setOcupado(true);
+                hotel.get(i).setDisponibilidad("ocupado");
+                ventanasHotel.get(i).setBackground(Color.red);
+            } else {
+                hotel.get(i).setDisponibilidad("Disponible");
+            }
+        }
+
+        String[] titulos = {"Clientes", "Habitacion"};
+        String[] registro = new String[2];
+        modelo1 = new DefaultTableModel(null, titulos);
+        for (Usuario us : u) {
+            String numeroHabitacionesString = String.valueOf(us.getnHabitaciones());
+            registro[0] = us.getNombre();
+            registro[1] = numeroHabitacionesString;
+            modelo1.addRow(registro);
+        }
+        tblClientes.setModel(modelo1);
+    }
+
+    private void cargarHabitaciones(ArrayList<Habitacion> hotel) {
         int numeroCuarto;
         hotel.add(h101);
         hotel.add(h102);
@@ -136,11 +150,11 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         hotel.add(suite2);
         hotel.add(suite3);
         hotel.add(suitePresidencial);
-        
-        String[] titulos = {"Numero de Habitacion" , "Capacidad" , "Precio" };
+
+        String[] titulos = {"Numero de Habitacion", "Capacidad", "Precio"};
         String[] registro = new String[3];
-        modelo = new DefaultTableModel(null,titulos);
-        for(Habitacion hb : hotel){
+        modelo = new DefaultTableModel(null, titulos);
+        for (Habitacion hb : hotel) {
             String numeroHabitacionesString = String.valueOf(hb.getNumeroCuarto());
             String capacidadString = String.valueOf(hb.getCapacidad());
             String precioString = String.valueOf(hb.getPrecio());
@@ -150,34 +164,34 @@ public class VentanaAdministrador extends javax.swing.JFrame {
             modelo.addRow(registro);
         }
         tblHabitacion.setModel(modelo);
-        
-        for(int i = 0 ; i < 12 ; i++){
+
+        for (int i = 0; i < 12; i++) {
             cbxSelHabitacion.addItem(hotel.get(i).getNumeroCuarto());
         }
         cbxSelHabitacion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                comboBox(hotel,cbxSelHabitacion);
+                comboBox(hotel, cbxSelHabitacion);
             }
         });
 
-        for(int i = 0 ; i < 12 ; i++){
+        for (int i = 0; i < 12; i++) {
             cbxNHabitacion.addItem(hotel.get(i).getNumeroCuarto());
         }
     }
-    
-    private void comboBox(ArrayList<Habitacion> hotel,JComboBox cbxSelHabitacion){
+
+    private void comboBox(ArrayList<Habitacion> hotel, JComboBox cbxSelHabitacion) {
         int item = (int) cbxSelHabitacion.getSelectedItem();
-        
-        for (int i = 0 ; i < hotel.size(); i++ ){
-            if(item == (hotel.get(i).getNumeroCuarto())){
-               txtAreaEspecificaciones.setText(hotel.get(i).toString());
+
+        for (int i = 0; i < hotel.size(); i++) {
+            if (item == (hotel.get(i).getNumeroCuarto())) {
+                txtAreaEspecificaciones.setText(hotel.get(i).toString());
 
             }
-        }   
-                
+        }
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -202,8 +216,13 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtPeticion = new javax.swing.JTextField();
         btnReservarArc = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        vtnIngresos = new javax.swing.JFrame();
+        jPanel12 = new javax.swing.JPanel();
+        btnSalirIng = new javax.swing.JButton();
+        txtIngresosTotales = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnReservar = new javax.swing.JButton();
@@ -241,6 +260,8 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         tblClientes = new javax.swing.JTable();
 
         vtnReservar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        vtnReservar.setPreferredSize(new java.awt.Dimension(525, 550));
+        vtnReservar.setSize(new java.awt.Dimension(500, 500));
 
         jPanel11.setBackground(new java.awt.Color(39, 40, 64));
 
@@ -312,8 +333,13 @@ public class VentanaAdministrador extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jButton2.setText("Cancelar");
+        btnCancelar.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -353,7 +379,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnReservarArc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)))
+                                .addComponent(btnCancelar)))
                         .addGap(31, 31, 31))))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(103, 103, 103)
@@ -398,7 +424,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReservarArc)
-                    .addComponent(jButton2))
+                    .addComponent(btnCancelar))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -409,7 +435,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,9 +449,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         vtnReservar.getContentPane().setLayout(vtnReservarLayout);
         vtnReservarLayout.setHorizontalGroup(
             vtnReservarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vtnReservarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         vtnReservarLayout.setVerticalGroup(
             vtnReservarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,6 +457,54 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel12.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel12.setForeground(new java.awt.Color(153, 153, 255));
+
+        btnSalirIng.setText("Salir");
+        btnSalirIng.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirIngActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Ingresos Totales");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtIngresosTotales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSalirIng, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel13))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIngresosTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalirIng)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout vtnIngresosLayout = new javax.swing.GroupLayout(vtnIngresos.getContentPane());
+        vtnIngresos.getContentPane().setLayout(vtnIngresosLayout);
+        vtnIngresosLayout.setHorizontalGroup(
+            vtnIngresosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        vtnIngresosLayout.setVerticalGroup(
+            vtnIngresosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -449,6 +521,11 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         });
 
         btnCaja.setText("Caja");
+        btnCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -912,8 +989,8 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxSelHabitacionActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
-       // VtnReservar vtnReservar = new VtnReservar();
-       //vtnReservar.setVisible(true);
+        // VtnReservar vtnReservar = new VtnReservar();
+        //vtnReservar.setVisible(true);
         vtnReservar.setVisible(true);
     }//GEN-LAST:event_btnReservarActionPerformed
 
@@ -942,36 +1019,64 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         int numeroPersonas = (int) spnNumeroPersonas.getModel().getValue();
         int numeroCuarto = (int) cbxNHabitacion.getSelectedItem();
         String formaPago;
-            if(this.rbtnTarjeta.isSelected()){
-               formaPago = this.rbtnTarjeta.getText();
-            }else{
-               formaPago = this.rbtnEfectivo.getText();
-            }
+        if (this.rbtnTarjeta.isSelected()) {
+            formaPago = this.rbtnTarjeta.getText();
+        } else {
+            formaPago = this.rbtnEfectivo.getText();
+        }
         try {
-            ProyectoFinalPoo.gurdarClientes(nombreApellido,id,correo,peticion,numeroPersonas,numeroCuarto,formaPago,i);
+            ProyectoFinalPoo.gurdarClientes(nombreApellido, id, correo, peticion, numeroPersonas, numeroCuarto, formaPago, i);
+            Usuario clienteNuevo = new Usuario(numeroCuarto, formaPago, peticion, numeroPersonas, correo, nombreApellido, id, " ");
+            usuarios.add(clienteNuevo);
+
+            for (int i = 0; i < hotel.size(); i++) {
+                if (hotel.get(i).getUsuario() != null) {
+                    hotel.get(i).setOcupado(true);
+                    hotel.get(i).setDisponibilidad("ocupado");
+                    ventanasHotel.get(i).setBackground(Color.red);
+                } else {
+                    hotel.get(i).setDisponibilidad("Disponible");
+                }
+            }
+
+            for (int i = 0; i < 12; i++) {
+                if (hotel.get(i).getNumeroCuarto() == numeroCuarto && hotel.get(i).isOcupado() == false) {
+                    hotel.get(i).setUsuario(clienteNuevo);
+                    hotel.get(i).setOcupado(true);
+                    hotel.get(i).setDisponibilidad("ocupado");
+                    ventanasHotel.get(i).setBackground(Color.red);
+                }
+
+            }
         } catch (IOException ex) {
             Logger.getLogger(VentanaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-          for(int i = 0 ; i < hotel.size() ; i++){
-            if(hotel.get(i).getUsuario() != null){
-                hotel.get(i).setOcupado(true);
-                hotel.get(i).setDisponibilidad("ocupado");
-                ventanasHotel.get(i).setBackground(Color.red);
-            }else{
-                hotel.get(i).setDisponibilidad("Disponible");
-            }
-         }
-       
+
+        asignarUsuarioNuevo(hotel, usuarios, ventanasHotel);
+        vtnReservar.setVisible(false);
     }//GEN-LAST:event_btnReservarArcActionPerformed
 
     private void cbxNHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNHabitacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxNHabitacionActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        vtnReservar.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCajaActionPerformed
+        vtnIngresos.setVisible(true);
+        double ingresos = ProyectoFinalPoo.ingresosTotales(hotel);
+        String ingresosTotales = Double.toString(ingresos);
+        txtIngresosTotales.setText(ingresosTotales);
+    }//GEN-LAST:event_btnCajaActionPerformed
+
+    private void btnSalirIngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirIngActionPerformed
+        vtnIngresos.setVisible(false);
+    }//GEN-LAST:event_btnSalirIngActionPerformed
+
     public static void main(String args[]) {
-        
-        
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -994,7 +1099,6 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VentanaAdministrador().setVisible(true);
@@ -1004,17 +1108,19 @@ public class VentanaAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCaja;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnReservar;
     private javax.swing.JButton btnReservarArc;
+    private javax.swing.JButton btnSalirIng;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbxNHabitacion;
     private javax.swing.JComboBox cbxSelHabitacion;
     private javax.swing.JLabel ejemplo;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1026,6 +1132,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1045,6 +1152,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaEspecificaciones;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtIngresosTotales;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPeticion;
     private javax.swing.JPanel v101;
@@ -1059,6 +1167,8 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel v302;
     private javax.swing.JPanel v303;
     private javax.swing.JPanel v304;
+    private javax.swing.JFrame vtnIngresos;
     private javax.swing.JFrame vtnReservar;
     // End of variables declaration//GEN-END:variables
+
 }
